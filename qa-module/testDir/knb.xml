@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:knBase xmlns:ns2="org.rb.qa.model">
+    <qaList>
+        <QA>
+            <Question>Q1. Explain JVM, JRE and JDK?</Question>
+            <Answer>
+JVM (Java Virtual Machine): 
+---------------------------
+It is an abstract machine. It is a specification that provides run-time environment in which java bytecode can be executed.
+
+JRE (Java Runtime Environment):
+--------------------------------
+
+JRE refers to a runtime environment in which java bytecode can be executed. 
+It implements the JVM (Java Virtual Machine) and provides all the class libraries and other support files that JVM uses at runtime. 
+So JRE is a software package that contains what is required to run a Java program.
+
+JDK(Java Development Kit): 
+--------------------------
+It is the tool necessary to compile, document and package Java programs. 
+The JDK completely includes JRE which contains tools for Java programmers. 
+The Java Development Kit is provided free of charge. Along with JRE, it includes an interpreter/loader, a compiler (javac), an archiver (jar), 
+a documentation generator (javadoc) and other tools needed in Java development. In short, it contains JRE + development tools.
+</Answer>
+        </QA>
+        <QA>
+            <Question>
+Q2. Explain public static void main(String args[]).
+			</Question>
+            <Answer>
+public : Public is an access modifier, which is used to specify who can access this method. 
+Public means that this Method will be accessible by any Class.
+
+static : It is a keyword in java which identifies it is class based i.e it can be accessed without creating the instance of a Class.
+
+void : It is the return type of the method. Void defines the method which will not return any value.
+
+main: It is the name of the method which is searched by JVM as a starting point for an application with a particular signature only. It is the method where the main execution occurs.
+
+String args[] : It is the parameter passed to the main method.
+			
+			</Answer>
+        </QA>
+        <QA>
+            <Question>Q3. Why Java is platform independent?</Question>
+            <Answer>
+Platform independent practically means "write once run anywhere". Java is called so because of its byte codes which can run on any system irrespective of its underlying operating system.
+			</Answer>
+        </QA>
+		<QA>
+            <Question>Q4. Why java is not 100% Object-oriented?</Question>
+            <Answer>
+Java is not 100% Object-oriented because it makes use of eight primitive datatypes such as boolean, byte, char, int, float, double, long, short which are not objects.
+			</Answer>
+        </QA>
+<QA>
+<Question>Q5. What are wrapper classes?</Question>
+<Answer>
+Wrapper classes converts the java primitives into the reference types (objects). Every primitive data type has a class dedicated to it. These are known as wrapper classes because they "wrap" the primitive data type into an object of that class. Refer to the below image which displays different primitive type, wrapper class and constructor argument. These are: Boolean, Byte, Character, Integer, Float, Double, Long, Short.
+</Answer>
+</QA>
+<QA>
+    <Question>
+        Q6. What are constructors in Java?
+    </Question>
+    <Answer>
+        <![CDATA[ 
+        <html>
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title></title>
+</head>
+<body>
+<h3 style="text-align: justify;"><strong><span style="font-family:
+verdana, geneva, sans-serif; font-size: 16px;">Q6.&nbsp;What
+are constructors in Java?</span></strong></h3>
+<p style="text-align: justify;"><span style="font-family: verdana,
+geneva, sans-serif; font-size: 14px;">In Java, constructor
+refers to a block of code which is used to initialize an object.
+It must have the same name as that of the class. Also, it has no
+return type and it is automatically called when an object is
+created.</span></p>
+<p style="text-align: justify;"><span style="font-family: verdana,
+geneva, sans-serif; font-size: 14px;">There are two types of
+constructors:</span></p>
+<ol>
+<li style="text-align: justify;"><span style="font-family:
+verdana, geneva, sans-serif; font-size: 14px;">Default
+constructor</span></li>
+<li style="text-align: justify;"><span style="font-family:
+verdana, geneva, sans-serif; font-size: 14px;">Parameterized
+constructor</span></li>
+</ol>
+</body>
+</html>
+        ]]>
+
+    </Answer>
+</QA>
+<QA>
+<Question>Q7. What is singleton class and how can we make a class singleton?</Question>
+<Answer>Singleton class is a class whose only one instance can be created at any given time, in one JVM. A class can be made singleton by making its constructor private.
+</Answer>
+</QA>
+<QA>
+<Question>Q8. What is the difference between Array list and vector?</Question>
+<Answer>
+<![CDATA[
+<html>
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title></title>
+</head>
+<body>
+<h2 style="font-family: verdana; font-size: 16px; text-align:
+center; font-weight: bold;">ArrayList vs Vector</h2>
+<table border="1">
+<tbody>
+<tr style="height: 24px;">
+<td style="text-align: center; height: 24px;"><span
+style="font-family: verdana, geneva, sans-serif;
+font-size: 14px;"><strong>Array List</strong></span></td>
+<td style="text-align: center; height: 24px;"><span
+style="font-family: verdana, geneva, sans-serif;
+font-size: 14px;"><strong>Vector</strong></span></td>
+</tr>
+<tr style="height: 34px;">
+<td style="padding-left: 4px; height: 34px;"><span
+style="font-family: verdana, geneva, sans-serif;
+font-size: 14px;">Array List is not synchronized.</span></td>
+<td style="padding-left: 4px; height: 34px;"><span
+style="font-family: verdana, geneva, sans-serif;
+font-size: 14px;">Vector is synchronized.</span></td>
+</tr>
+<tr style="height: 36px;">
+<td style="padding-left: 4px; height: 36px;"><span
+style="font-weight: 400; font-family: verdana, geneva,
+sans-serif; font-size: 14px;">Array List is fast as it's
+non-synchronized.</span></td>
+<td style="padding-left: 4px; height: 36px;"><span
+style="font-weight: 400; font-family: verdana, geneva,
+sans-serif; font-size: 14px;">Vector is slow as it is
+thread safe.</span></td>
+</tr>
+<tr style="height: 48px;">
+<td style="padding-left: 4px; height: 48px;"><span
+style="font-weight: 400; font-family: verdana, geneva,
+sans-serif; font-size: 14px;">If an element is inserted
+into the Array List, it increases its Array size by 50%.</span></td>
+<td style="padding-left: 4px; height: 48px;"><span
+style="font-weight: 400; font-family: verdana, geneva,
+sans-serif; font-size: 14px;">Vector defaults to doubling
+size of its array.</span></td>
+</tr>
+<tr style="height: 35.5781px;">
+<td style="padding-left: 4px; height: 35.5781px;"><span
+style="font-weight: 400; font-family: verdana, geneva,
+sans-serif; font-size: 14px;">Array List does not define
+the increment size.</span></td>
+<td style="padding-left: 4px; height: 35.5781px;"><span
+style="font-weight: 400; font-family: verdana, geneva,
+sans-serif; font-size: 14px;">Vector defines the increment
+size.</span></td>
+</tr>
+<tr style="height: 48px;">
+<td style="padding-left: 4px; height: 48px;"><span
+style="font-weight: 400; font-family: verdana, geneva,
+sans-serif; font-size: 14px;">Array List can only use
+Iterator for traversing an Array List.</span></td>
+<td style="padding-left: 4px; height: 48px;"><span
+style="font-weight: 400; font-family: verdana, geneva,
+sans-serif; font-size: 14px;">Except Hashtable, Vector is
+the only other class which uses both Enumeration and
+Iterator.</span></td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
+
+]]>
+</Answer>
+</QA>
+
+    </qaList>
+</ns2:knBase>

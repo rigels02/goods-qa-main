@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:knBase xmlns:ns2="org.rb.qa.model">
+    <qaList>
+        <QA>
+            <Question>Question31</Question>
+            <Answer>Answer31</Answer>
+        </QA>
+        <QA>
+            <Question>Question32</Question>
+            <Answer>Answer32</Answer>
+        </QA>
+        <QA>
+            <Question>Question33</Question>
+            <Answer>Answer33</Answer>
+        </QA>
+    </qaList>
+</ns2:knBase>

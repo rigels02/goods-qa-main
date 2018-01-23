@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:knBase xmlns:ns2="org.rb.qa.model">
+<qaList>
+<QA>
+<Question>Question1</Question>
+<Answer>Answer1</Answer>
+</QA>
+<QA>
+<Question>Question2</Question>
+<Answer>Answer2</Answer>
+</QA>
+<QA>
+<Question>Question3</Question>
+<Answer>Answer3</Answer>
+</QA>
+<QA>
+<Question>Question4</Question>
+<Answer>Answer4</Answer>
+</QA>
+<QA>
+<Question>Question5</Question>
+<Answer>Answer5</Answer>
+</QA>
+<QA>
+<Question>Question6</Question>
+<Answer>Answer6</Answer>
+</QA>
+</qaList>
+</ns2:knBase>
