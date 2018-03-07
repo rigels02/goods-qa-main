@@ -1,7 +1,5 @@
 package org.rb.qa.storage.simple;
 
-import javax.xml.bind.annotation.XmlElement;
-
 /**
  *
  * @author raitis

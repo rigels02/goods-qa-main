@@ -22,6 +22,7 @@ import org.rb.qa.model.KNBase;
 
 /**
  * Uses XmlFactory to get application's xml deserializer
+ * 
  * @author raitis
  */
 public class KNBaseLoader {

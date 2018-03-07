@@ -1,11 +1,9 @@
 package org.rb.qa.storage;
 
+import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import org.rb.qa.model.KNBase;
 import org.rb.qa.utils.Resources;
-import org.rb.mm.interfaces.IStorage;
 
 /**
  *
@@ -27,15 +25,16 @@ public class InitKNBase {
      */
     public static KNBase go(IStorageFactory storageFactory) throws Exception {
         
-        if( !Files.exists(Paths.get(knbXML)) ){
+        //if( !Files.exists(Paths.get(knbXML)) ){
+        if( ! new File(knbXML).exists() ){
             Resources resources = new Resources();
-            if(!InitKNBase.isAndroid()){
-                resources.copyResourceToLocal("/assetsj/"+knbXML);
-            }else{
-                resources.copyResourceToLocal("/assets/"+knbXML);
+            if(InitKNBase.isAndroid()) {
+                throw new IllegalAccessException("Illegal method call from Android!");
             }
+                resources.copyResourceToLocal("/assetsj/"+knbXML);
+            
         }
-        if( !Files.exists(Paths.get(knbXML)) ){
+        if( !new File(knbXML).exists() ){
             throw new RuntimeException(knbXML+" was not copied!");
         }
         
