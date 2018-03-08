@@ -7,6 +7,7 @@ import org.rb.qa.utils.Resources;
 
 /**
  *
+ * For Android use adapted classes from package: android
  * @author raitis
  */
 public class InitKNBase {

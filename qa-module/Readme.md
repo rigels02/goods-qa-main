@@ -8,7 +8,7 @@ http://simple.sourceforge.net/
 
 Technologies
 ------------
-JAXB and SimpleXML (for Android)
+XML parsers JAXB and SimpleXML (for Android)
 
 The StorageFactories is used to get Factory 
 who implements IStorageFactory interface  responsible for xml  

@@ -2,6 +2,8 @@ package org.rb.mm.interfaceimpl;
 
 import com.sun.xml.bind.marshaller.DataWriter;
 import java.io.FileReader;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -56,6 +58,26 @@ public class JaxbXmlParser<T> implements IStorage<T>{
         Unmarshaller um = context.createUnmarshaller();
         T knBase1 = (T) um.unmarshal(new FileReader(xmlFile));
         return knBase1;
+    }
+
+    @Override
+    public T load(InputStream xmlIs) throws Exception {
+        // create JAXB context and instantiate marshaller
+        JAXBContext context = JAXBContext.newInstance(clazz);
+        Unmarshaller um = context.createUnmarshaller();
+        T knBase1 = (T) um.unmarshal(xmlIs);
+        return knBase1;
+    }
+
+    /**
+     * TODO: NOT IMPLEMENTED YET!
+     * @param xmlOs
+     * @param knBase
+     * @throws Exception 
+     */
+    @Override
+    public void save(OutputStream xmlOs, T knBase) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
     
 }

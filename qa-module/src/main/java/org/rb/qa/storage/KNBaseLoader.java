@@ -16,18 +16,23 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import org.rb.qa.model.KNBase;
+import org.rb.qa.model.QA;
 
 
 
 
 /**
  * Uses XmlFactory to get application's xml deserializer
+ * <pre>
+ * !!! For Android use : load(InputStream is) only
+ * </pre>
+ * For Android use adapted classes from package: android
  * 
  * @author raitis
  */
 public class KNBaseLoader {
 
-    private static final Logger LOG = Logger.getLogger(KNBaseLoader.class.getName());
+   private static final Logger LOG = Logger.getLogger(KNBaseLoader.class.getName());
     
     private KNBase knBase;
     private IStorageFactory deserializerFactory;
@@ -53,7 +58,7 @@ public class KNBaseLoader {
             try {
                 //load(file.getAbsolutePath());
                  load(file.getPath());
-            } catch (JAXBException | FileNotFoundException ex) {
+            } catch (Exception ex) {
                 Logger.getLogger(KNBaseLoader.class.getName()).log(Level.SEVERE, null, ex.getMessage());
                 throw new RuntimeException(ex.getMessage());
             }
@@ -63,45 +68,20 @@ public class KNBaseLoader {
     
     public KNBase loadByFileNames(List<String> fileList) throws Exception{
         for (String filename : fileList) {
-            if( !Files.exists(Paths.get(filename))){
+
+            if( ! new File(filename).exists()){
                throw new RuntimeException("File: "+filename+" not exists!");
             }
             try {
                 load(filename);
-            } catch (JAXBException | FileNotFoundException ex) {
+            } catch (Exception ex) {
                 LOG.log(Level.SEVERE, null, ex.getMessage());
                 throw new RuntimeException(ex.getMessage());
             }
         }
         return knBase;
     }
-    public KNBase loadByDir(String sourceDirectory) throws Exception{
-      if( !Files.exists(Paths.get(sourceDirectory))){
-               throw new RuntimeException(""+sourceDirectory+" not exists!");
-            }  
-      if( !Files.isDirectory(Paths.get(sourceDirectory))){
-         throw new RuntimeException(""+sourceDirectory+" is not a directory!");
-      }
-      DirectoryStream<Path> dirStream=null;
-        try {
-          dirStream = Files.newDirectoryStream(Paths.get(sourceDirectory), "*.xml");
-        } catch (IOException ex) {
-            LOG.log(Level.SEVERE, null, ex.getMessage());
-            throw new RuntimeException(ex.getMessage());
-        }
-        List<String> fnames= new ArrayList<>();
-        for (Path file : dirStream) {
-            fnames.add(file.toString());
-        }
-        loadByFileNames(fnames);
-        return knBase;
-    }
-    
-    public KNBase loadFromStream(InputStream ins) throws JAXBException{
-      JAXBContext context = JAXBContext.newInstance(KNBase.class);
-        Unmarshaller um = context.createUnmarshaller();
-        return (KNBase) um.unmarshal(ins);
-    }
+
     
     public KNBase loadFromFile(String fileName) throws Exception {
         List<String> flist = new ArrayList<>();
@@ -109,5 +89,11 @@ public class KNBaseLoader {
         return loadByFileNames(flist);
     }
 
-    
+    public KNBase loadFromStream(InputStream is) throws Exception {
+        KNBase knBase1 = (KNBase) deserializerFactory.deSerialize(is);
+        knBase.getQaList().clear();
+        this.knBase.getQaList().addAll(knBase1.getQaList());
+        return knBase;
+    }
+     
 }

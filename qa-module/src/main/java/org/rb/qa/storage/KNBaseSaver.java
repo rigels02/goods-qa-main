@@ -2,10 +2,13 @@ package org.rb.qa.storage;
 
 
 
+import java.io.OutputStream;
 import org.rb.qa.model.KNBase;
 
 /**
  * Use XmlFactory to get concrete XML serializer implementation for app.
+ * For Android use :   save(OutputStream xmlOs).
+ * For Android use adapted classes from package: android
  * @author raitis
  */
 public class KNBaseSaver {
@@ -32,5 +35,15 @@ public class KNBaseSaver {
       
     }
     
+    /**
+     * Serialize knBase data to file output stream
+     * @param xmlOs file output stream
+     * @throws Exception
+     */
+    public void save(OutputStream xmlOs) throws Exception {
+
+        serializeFactory.serialize(xmlOs, knBase);
+
+    }
    
 }

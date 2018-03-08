@@ -1,6 +1,8 @@
 package org.rb.mm.interfaceimpl;
 
 import java.io.File;
+import java.io.InputStream;
+import java.io.OutputStream;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 import org.rb.mm.interfaces.IStorage;
@@ -30,6 +32,19 @@ public class SimpleXmlParser<T> implements IStorage<T>{
         Persister deserializer = new Persister();
        T knBase = (T) deserializer.read(clazz, new File(xmlFile));
        return knBase;
+    }
+
+    @Override
+    public T load(InputStream xmlIs) throws Exception {
+    Persister deserializer = new Persister();
+        T knBase = (T) deserializer.read(clazz, xmlIs);
+        return knBase; 
+    }
+
+    @Override
+    public void save(OutputStream xmlOs, T knBase) throws Exception {
+         Serializer serializer = new Persister();
+        serializer.write(knBase,xmlOs);
     }
     
 }

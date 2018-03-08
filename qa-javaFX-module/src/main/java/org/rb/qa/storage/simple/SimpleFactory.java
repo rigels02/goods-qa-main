@@ -1,5 +1,7 @@
 package org.rb.qa.storage.simple;
 
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.List;
 import org.rb.mm.interfaceimpl.SimpleXmlParser;
 import org.rb.mm.interfaces.IStorage;
@@ -56,6 +58,19 @@ public class SimpleFactory implements IStorageFactory{
            tlst.add(nqa);
         }
         return knb;
+    }
+
+    @Override
+    public KNBase deSerialize(InputStream xmlIs) throws Exception {
+    org.rb.qa.storage.simple.KNBase knBaseS= (org.rb.qa.storage.simple.KNBase) xmlParser.load(xmlIs);
+        KNBase knb = simpleToKnBase(knBaseS);
+        return knb;   
+    }
+
+    @Override
+    public void serialize(OutputStream xmlOs, KNBase knBase) throws Exception {
+     org.rb.qa.storage.simple.KNBase knBaseSimple = knBaseToSimple(knBase);
+        xmlParser.save(xmlOs,knBaseSimple);  
     }
 
     
