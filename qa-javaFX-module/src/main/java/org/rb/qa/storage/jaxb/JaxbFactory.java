@@ -10,6 +10,7 @@ import org.rb.qa.model.KNBase;
 
 /**
  *
+ * JAXB parser factory
  * @author raitis
  */
 public class JaxbFactory implements IStorageFactory  {

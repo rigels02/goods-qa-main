@@ -44,6 +44,21 @@ public class InitKNBase {
        
     }
 
+    /**
+     * Create new KNBase file
+     * @param storageFactory
+     * @return
+     * @throws IOException
+     * @throws Exception 
+     */
+    public static KNBase create(IStorageFactory storageFactory) throws IOException, Exception{
+        boolean file = new File(knbXML).createNewFile();
+        KNBase knBase = new KNBase();
+        KNBaseSaver.take(knBase, storageFactory).save(knbXML);
+        KNBase kb = new KNBaseLoader(storageFactory).loadFromFile(knbXML);
+        return kb;
+    }
+    
     private InitKNBase() {
     }
 

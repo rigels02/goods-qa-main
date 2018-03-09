@@ -65,6 +65,12 @@ public class QAGenerator {
         }
         return DocType.Markdown;
     }
+    
+    public DocType getAnswerDocTypeByIndex(int index){
+        List<QA> klist = knBase.getQaList();
+       return ConverterFactory.take(klist.get(index).getAnswer()).getDocType();
+    }
+    
     public DocType getAnswerDocType(String answer){
        return ConverterFactory.take(answer).getDocType();
     }
@@ -121,7 +127,7 @@ public class QAGenerator {
     }
 
     public String getQuestionByIndex(int questionIdx) {
-        return knBase.getQaList().get(questionIdx).getQuestion();
+        return knBase.getQaList().get(questionIdx).getQuestion().trim();
     }
 
     public KNBase getKnBase() {

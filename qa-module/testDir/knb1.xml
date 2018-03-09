@@ -63,40 +63,40 @@ Wrapper classes converts the java primitives into the reference types (objects).
 <Question>
         Q6. What are constructors in Java?
     </Question>
-<Answer><![CDATA[
+<Answer>
          
-        <html>
-<head>
+        &lt;html&gt;
+&lt;head&gt;
 
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<title></title>
-</head>
-<body>
-<h3 style="text-align: justify;"><strong><span style="font-family:
-verdana, geneva, sans-serif; font-size: 16px;">Q6.&nbsp;What
-are constructors in Java?</span></strong></h3>
-<p style="text-align: justify;"><span style="font-family: verdana,
-geneva, sans-serif; font-size: 14px;">In Java, constructor
+&lt;meta http-equiv="content-type" content="text/html; charset=UTF-8"&gt;
+&lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h3 style="text-align: justify;"&gt;&lt;strong&gt;&lt;span style="font-family:
+verdana, geneva, sans-serif; font-size: 16px;"&gt;Q6.&amp;nbsp;What
+are constructors in Java?&lt;/span&gt;&lt;/strong&gt;&lt;/h3&gt;
+&lt;p style="text-align: justify;"&gt;&lt;span style="font-family: verdana,
+geneva, sans-serif; font-size: 14px;"&gt;In Java, constructor
 refers to a block of code which is used to initialize an object.
 It must have the same name as that of the class. Also, it has no
 return type and it is automatically called when an object is
-created.</span></p>
-<p style="text-align: justify;"><span style="font-family: verdana,
-geneva, sans-serif; font-size: 14px;">There are two types of
-constructors:</span></p>
-<ol>
-<li style="text-align: justify;"><span style="font-family:
-verdana, geneva, sans-serif; font-size: 14px;">Default
-constructor</span></li>
-<li style="text-align: justify;"><span style="font-family:
-verdana, geneva, sans-serif; font-size: 14px;">Parameterized
-constructor</span></li>
-</ol>
-</body>
-</html>
+created.&lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: justify;"&gt;&lt;span style="font-family: verdana,
+geneva, sans-serif; font-size: 14px;"&gt;There are two types of
+constructors:&lt;/span&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li style="text-align: justify;"&gt;&lt;span style="font-family:
+verdana, geneva, sans-serif; font-size: 14px;"&gt;Default
+constructor&lt;/span&gt;&lt;/li&gt;
+&lt;li style="text-align: justify;"&gt;&lt;span style="font-family:
+verdana, geneva, sans-serif; font-size: 14px;"&gt;Parameterized
+constructor&lt;/span&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/body&gt;
+&lt;/html&gt;
         
 
-    ]]></Answer>
+    </Answer>
 </QA>
 <QA>
 <Question>Q7. What is singleton class and how can we make a class singleton?</Question>
@@ -105,83 +105,83 @@ constructor</span></li>
 </QA>
 <QA>
 <Question>Q8. What is the difference between Array list and vector?</Question>
-<Answer><![CDATA[
+<Answer>
 
-<html>
-<head>
+&lt;html&gt;
+&lt;head&gt;
 
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<title></title>
-</head>
-<body>
-<h2 style="font-family: verdana; font-size: 16px; text-align:
-center; font-weight: bold;">ArrayList vs Vector</h2>
-<table border="1">
-<tbody>
-<tr style="height: 24px;">
-<td style="text-align: center; height: 24px;"><span
+&lt;meta http-equiv="content-type" content="text/html; charset=UTF-8"&gt;
+&lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h2 style="font-family: verdana; font-size: 16px; text-align:
+center; font-weight: bold;"&gt;ArrayList vs Vector&lt;/h2&gt;
+&lt;table border="1"&gt;
+&lt;tbody&gt;
+&lt;tr style="height: 24px;"&gt;
+&lt;td style="text-align: center; height: 24px;"&gt;&lt;span
 style="font-family: verdana, geneva, sans-serif;
-font-size: 14px;"><strong>Array List</strong></span></td>
-<td style="text-align: center; height: 24px;"><span
+font-size: 14px;"&gt;&lt;strong&gt;Array List&lt;/strong&gt;&lt;/span&gt;&lt;/td&gt;
+&lt;td style="text-align: center; height: 24px;"&gt;&lt;span
 style="font-family: verdana, geneva, sans-serif;
-font-size: 14px;"><strong>Vector</strong></span></td>
-</tr>
-<tr style="height: 34px;">
-<td style="padding-left: 4px; height: 34px;"><span
+font-size: 14px;"&gt;&lt;strong&gt;Vector&lt;/strong&gt;&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style="height: 34px;"&gt;
+&lt;td style="padding-left: 4px; height: 34px;"&gt;&lt;span
 style="font-family: verdana, geneva, sans-serif;
-font-size: 14px;">Array List is not synchronized.</span></td>
-<td style="padding-left: 4px; height: 34px;"><span
+font-size: 14px;"&gt;Array List is not synchronized.&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding-left: 4px; height: 34px;"&gt;&lt;span
 style="font-family: verdana, geneva, sans-serif;
-font-size: 14px;">Vector is synchronized.</span></td>
-</tr>
-<tr style="height: 36px;">
-<td style="padding-left: 4px; height: 36px;"><span
+font-size: 14px;"&gt;Vector is synchronized.&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style="height: 36px;"&gt;
+&lt;td style="padding-left: 4px; height: 36px;"&gt;&lt;span
 style="font-weight: 400; font-family: verdana, geneva,
-sans-serif; font-size: 14px;">Array List is fast as it's
-non-synchronized.</span></td>
-<td style="padding-left: 4px; height: 36px;"><span
+sans-serif; font-size: 14px;"&gt;Array List is fast as it's
+non-synchronized.&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding-left: 4px; height: 36px;"&gt;&lt;span
 style="font-weight: 400; font-family: verdana, geneva,
-sans-serif; font-size: 14px;">Vector is slow as it is
-thread safe.</span></td>
-</tr>
-<tr style="height: 48px;">
-<td style="padding-left: 4px; height: 48px;"><span
+sans-serif; font-size: 14px;"&gt;Vector is slow as it is
+thread safe.&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style="height: 48px;"&gt;
+&lt;td style="padding-left: 4px; height: 48px;"&gt;&lt;span
 style="font-weight: 400; font-family: verdana, geneva,
-sans-serif; font-size: 14px;">If an element is inserted
-into the Array List, it increases its Array size by 50%.</span></td>
-<td style="padding-left: 4px; height: 48px;"><span
+sans-serif; font-size: 14px;"&gt;If an element is inserted
+into the Array List, it increases its Array size by 50%.&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding-left: 4px; height: 48px;"&gt;&lt;span
 style="font-weight: 400; font-family: verdana, geneva,
-sans-serif; font-size: 14px;">Vector defaults to doubling
-size of its array.</span></td>
-</tr>
-<tr style="height: 35.5781px;">
-<td style="padding-left: 4px; height: 35.5781px;"><span
+sans-serif; font-size: 14px;"&gt;Vector defaults to doubling
+size of its array.&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style="height: 35.5781px;"&gt;
+&lt;td style="padding-left: 4px; height: 35.5781px;"&gt;&lt;span
 style="font-weight: 400; font-family: verdana, geneva,
-sans-serif; font-size: 14px;">Array List does not define
-the increment size.</span></td>
-<td style="padding-left: 4px; height: 35.5781px;"><span
+sans-serif; font-size: 14px;"&gt;Array List does not define
+the increment size.&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding-left: 4px; height: 35.5781px;"&gt;&lt;span
 style="font-weight: 400; font-family: verdana, geneva,
-sans-serif; font-size: 14px;">Vector defines the increment
-size.</span></td>
-</tr>
-<tr style="height: 48px;">
-<td style="padding-left: 4px; height: 48px;"><span
+sans-serif; font-size: 14px;"&gt;Vector defines the increment
+size.&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style="height: 48px;"&gt;
+&lt;td style="padding-left: 4px; height: 48px;"&gt;&lt;span
 style="font-weight: 400; font-family: verdana, geneva,
-sans-serif; font-size: 14px;">Array List can only use
-Iterator for traversing an Array List.</span></td>
-<td style="padding-left: 4px; height: 48px;"><span
+sans-serif; font-size: 14px;"&gt;Array List can only use
+Iterator for traversing an Array List.&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding-left: 4px; height: 48px;"&gt;&lt;span
 style="font-weight: 400; font-family: verdana, geneva,
-sans-serif; font-size: 14px;">Except Hashtable, Vector is
+sans-serif; font-size: 14px;"&gt;Except Hashtable, Vector is
 the only other class which uses both Enumeration and
-Iterator.</span></td>
-</tr>
-</tbody>
-</table>
-</body>
-</html>
+Iterator.&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 
 
-]]></Answer>
+</Answer>
 </QA>
 </qaList>
 </ns2:knBase>

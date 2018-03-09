@@ -9,7 +9,7 @@ import org.rb.qa.model.KNBase;
 import org.rb.qa.storage.IStorageFactory;
 
 /**
- *
+ * SimpleXml parser factory
  * @author raitis
  */
 public class SimpleFactory implements IStorageFactory{
