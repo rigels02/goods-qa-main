@@ -1,5 +1,15 @@
-XmlParsers implements IStorage interface
-========================================
+# QA-main multiple modules maven project
 
-1) Jaxb xml parser implementation  - JaxbParseInterfaceImpl
-2) Simple xml parser implementation - SimpleParserInterfaceImpl
+## XmlParsers implements IStorage interface
+
+1) IStorage interface
+2) Jaxb xml parser implementation  - JaxbParseInterfaceImpl
+3) Simple xml parser implementation - SimpleParserInterfaceImpl
+
+## QA-module
+
+Questions and Answers processing module
+
+## QA-javaFX-module
+
+Questions and Answers JavaFX application
