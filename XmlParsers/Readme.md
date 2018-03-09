@@ -1,4 +1,4 @@
-# XmlParsers implements IStorage interface 
+# XmlParsers module implements IStorage interface 
 
 1) IStorage interface
 2) Jaxb xml parser IStorage implementation  - JaxbParseInterfaceImpl
