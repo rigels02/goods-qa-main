@@ -61,10 +61,19 @@ public class StorageFactories {
       
     }
 
+    /**
+     * Get storage factory by type
+     * @param storageType StorageType.Default, StorageType.JaxbStorage etc.
+     * @return 
+     */
    public IStorageFactory getFactory(StorageType storageType){
       return factories.get(storageType);
    }
    
+   /**
+    * Get default storage factory
+    * @return 
+    */
    public IStorageFactory getFactory(){
       return this.factory;
    }
