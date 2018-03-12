@@ -21,28 +21,28 @@ public class SimpleXmlParser<T> implements IStorage<T>{
     }
      
     @Override
-    public void save(String filePath, T knBase) throws Exception {
+    public synchronized void save(String filePath, T knBase) throws Exception {
         Serializer serializer = new Persister();
         
         serializer.write(knBase, new File(filePath));
     }
 
     @Override
-    public T load(String xmlFile) throws Exception {
+    public synchronized T load(String xmlFile) throws Exception {
         Persister deserializer = new Persister();
        T knBase = (T) deserializer.read(clazz, new File(xmlFile));
        return knBase;
     }
 
     @Override
-    public T load(InputStream xmlIs) throws Exception {
+    public synchronized T load(InputStream xmlIs) throws Exception {
     Persister deserializer = new Persister();
         T knBase = (T) deserializer.read(clazz, xmlIs);
         return knBase; 
     }
 
     @Override
-    public void save(OutputStream xmlOs, T knBase) throws Exception {
+    public synchronized void save(OutputStream xmlOs, T knBase) throws Exception {
          Serializer serializer = new Persister();
         serializer.write(knBase,xmlOs);
     }

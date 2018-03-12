@@ -27,7 +27,7 @@ public class JaxbXmlParser<T> implements IStorage<T>{
     
     
     @Override
-    public void save(String filePath, T knBase) throws Exception {
+    public synchronized  void save(String filePath, T knBase) throws Exception {
      JAXBContext context = JAXBContext.newInstance(clazz);
         Marshaller ma = context.createMarshaller();
         ma.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
@@ -61,7 +61,7 @@ public class JaxbXmlParser<T> implements IStorage<T>{
     }
 
     @Override
-    public T load(InputStream xmlIs) throws Exception {
+    public synchronized   T load(InputStream xmlIs) throws Exception {
         // create JAXB context and instantiate marshaller
         JAXBContext context = JAXBContext.newInstance(clazz);
         Unmarshaller um = context.createUnmarshaller();
@@ -76,7 +76,7 @@ public class JaxbXmlParser<T> implements IStorage<T>{
      * @throws Exception 
      */
     @Override
-    public void save(OutputStream xmlOs, T knBase) throws Exception {
+    public synchronized  void save(OutputStream xmlOs, T knBase) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); 
     }
     
