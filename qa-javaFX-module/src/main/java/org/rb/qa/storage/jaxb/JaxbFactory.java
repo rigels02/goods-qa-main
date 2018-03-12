@@ -2,6 +2,7 @@ package org.rb.qa.storage.jaxb;
 
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Date;
 import org.rb.qa.storage.IStorageFactory;
 import java.util.List;
 import org.rb.mm.interfaceimpl.JaxbXmlParser;
@@ -10,13 +11,16 @@ import org.rb.qa.model.KNBase;
 
 /**
  *
- * JAXB parser factory
+ * JAXB parser factory.
+ * Date dataModifyDate field added..
  * @author raitis
  */
 public class JaxbFactory implements IStorageFactory  {
 
     private final JaxbXmlParser xmlParser;
 
+      private Date dataModifyDate;
+    
     public JaxbFactory() {
          xmlParser= new JaxbXmlParser(org.rb.qa.storage.jaxb.KNBase.class);
              
@@ -49,17 +53,20 @@ public class JaxbFactory implements IStorageFactory  {
             org.rb.qa.storage.jaxb.QA nqa = new org.rb.qa.storage.jaxb.QA(qa.getQuestion(), qa.getAnswer());
             tlst.add(nqa);
         }
+        knBaseJaxb.setModifyTime(new Date());
         return knBaseJaxb;
     }
     
    
     private org.rb.qa.model.KNBase jaxbToKnBase(org.rb.qa.storage.jaxb.KNBase knBaseJaxb) {
       org.rb.qa.model.KNBase knb = new org.rb.qa.model.KNBase();
+      this.dataModifyDate = knBaseJaxb.getModifyTime();
         List<org.rb.qa.model.QA> tlst = knb.getQaList();
         for (org.rb.qa.storage.jaxb.QA qa : knBaseJaxb.getQaList()) {
            org.rb.qa.model.QA nqa= new org.rb.qa.model.QA(qa.getQuestion(), qa.getAnswer());
            tlst.add(nqa);
         }
+        
         return knb;
     }
 
@@ -76,5 +83,8 @@ public class JaxbFactory implements IStorageFactory  {
         xmlParser.save(xmlOs, knBaseJaxb);   
     }
 
+    public Date getDataModifyDate() {
+        return dataModifyDate;
+    }
     
 }

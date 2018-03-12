@@ -2,6 +2,7 @@ package org.rb.qa.storage.simple;
 
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Date;
 import java.util.List;
 import org.rb.mm.interfaceimpl.SimpleXmlParser;
 import org.rb.mm.interfaces.IStorage;
@@ -9,10 +10,13 @@ import org.rb.qa.model.KNBase;
 import org.rb.qa.storage.IStorageFactory;
 
 /**
- * SimpleXml parser factory
+ * SimpleXml parser factory.
+ * Date dataModifyDate field added.
  * @author raitis
  */
 public class SimpleFactory implements IStorageFactory{
+    
+    private Date dataModifyDate;
     
     private final SimpleXmlParser xmlParser;
 
@@ -47,11 +51,13 @@ public class SimpleFactory implements IStorageFactory{
               org.rb.qa.storage.simple.QA nqa = new org.rb.qa.storage.simple.QA(qa.getQuestion(), qa.getAnswer());
             tlst.add(nqa);
         }
+        knBaseS.setModifyTime(new Date());
         return knBaseS;
     }
     
     protected org.rb.qa.model.KNBase simpleToKnBase(org.rb.qa.storage.simple.KNBase knBaseS) {
       org.rb.qa.model.KNBase knb = new org.rb.qa.model.KNBase();
+      this.dataModifyDate = knBaseS.getModifyTime();
         List<org.rb.qa.model.QA> tlst = knb.getQaList();
         for (org.rb.qa.storage.simple.QA qa : knBaseS.getQaList()) {
            org.rb.qa.model.QA nqa= new org.rb.qa.model.QA(qa.getQuestion(), qa.getAnswer());
@@ -73,5 +79,7 @@ public class SimpleFactory implements IStorageFactory{
         xmlParser.save(xmlOs,knBaseSimple);  
     }
 
-    
+    public Date getDataModifyDate() {
+        return dataModifyDate;
+    }
 }

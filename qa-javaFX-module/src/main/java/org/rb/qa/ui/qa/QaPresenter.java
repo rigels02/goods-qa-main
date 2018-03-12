@@ -3,6 +3,7 @@ package org.rb.qa.ui.qa;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URL;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -40,6 +41,7 @@ import org.rb.qa.ui.qaeditview.QaeditviewPresenter;
 import org.rb.qa.ui.qaeditview.QaeditviewView;
 import org.rb.qa.ui.tools.Dialogs;
 import org.rb.qa.storage.StorageFactories;
+import org.rb.qa.storage.jaxb.JaxbFactory;
 
 /**
  *
@@ -109,6 +111,7 @@ public class QaPresenter implements Initializable {
         
         htmlQuestion = 0;
         mdQuestions = 0;
+        Date lastModified = ((JaxbFactory)StorageFactories.take().getFactory()).getDataModifyDate();
         totalQuestions = qaGenerator.getKnBase().getQaList().size();
         for (QA qa : qaGenerator.getKnBase().getQaList()) {
             DocType type = qaGenerator.getAnswerDocType(qa.getAnswer());
@@ -123,8 +126,8 @@ public class QaPresenter implements Initializable {
                     
             }
         }
-        fmainInfo.setText(String.format("Total Questions:%d, HTML= %d, MD= %d",
-                totalQuestions, htmlQuestion, mdQuestions));
+        fmainInfo.setText(String.format("Total Questions:%d, HTML= %d, MD= %d, Modified: %s",
+                totalQuestions, htmlQuestion, mdQuestions,lastModified));
     }
     
     public void updateListView(){

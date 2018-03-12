@@ -1,14 +1,18 @@
 package org.rb.qa.storage.simple;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
- * Simple Xml specific Data model
+ * Simple Xml specific Data model.
+ *  modifyTime field added.
  * @author raitis
  */
 public class KNBase {
 
+    private Date modifyTime;
+     
     private List<QA> qaList;
 
     public KNBase() {
@@ -25,6 +29,15 @@ public class KNBase {
         this.qaList = qaList;
     }
 
+    public Date getModifyTime() {
+        return modifyTime;
+    }
+
+    public void setModifyTime(Date modifyTime) {
+        this.modifyTime = modifyTime;
+    }
+
+    
     @Override
     public String toString() {
         return "KNBase{" + "qaList=" + qaList + '}';
