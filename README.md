@@ -11,6 +11,13 @@ Multiple modules maven project
 
 Questions and Answers processing module
 
+## QA-Restful module
+
+Restful service module for QA-main
+
+- RESTful web services with Java (Jersey / JAX-RS)
+- Simple container server (KNBaseServer) to expose Jersey RestFul service
+
 ## QA-javaFX-module
 
 Questions and Answers JavaFX application
