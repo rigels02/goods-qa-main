@@ -9,7 +9,7 @@
          <module>XmlParsers</module>
         <module>qa-module</module>
         <module>qa-javaFX-module</module>
-       
+        <module>qa-restful</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

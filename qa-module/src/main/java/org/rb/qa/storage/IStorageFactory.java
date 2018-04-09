@@ -6,7 +6,9 @@ import org.rb.mm.interfaces.IStorage;
 import org.rb.qa.model.KNBase;
 
 /**
- *
+ * XML storage factory interface.
+ * Details in AbstractStorageFactory.
+ * @see AbstractStorageFactory
  * @author raitis
  */
 public interface IStorageFactory {

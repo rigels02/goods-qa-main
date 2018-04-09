@@ -2,6 +2,7 @@ package org.rb.qa.storage;
 
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Date;
 
 import org.rb.mm.interfaces.IStorage;
 import org.rb.qa.model.KNBase;
@@ -29,6 +30,8 @@ public abstract class AbstractStorageFactory<T> implements IStorageFactory{
     
     private final IStorage<T> ioStorage;
     
+    //Modify time field's value in T
+    protected Date dataModifyDate;
 
     public AbstractStorageFactory(IStorage<T> storage) {
        // xmlParser = new SimpleXmlParser(org.rb.qa.storage.simple.KNBase.class);
@@ -58,6 +61,8 @@ public abstract class AbstractStorageFactory<T> implements IStorageFactory{
     /**
      * Convert org.​rb.​qa.​model.KNBase to T .
      * T is the same as KNBase but with specific fields annotations.
+     * T is better to keep in other  package then org.​rb.​qa.​model.KNBase.
+     * This method should also setup T modify time.
      * <pre>
      * Example:
      * --------
@@ -69,6 +74,7 @@ public abstract class AbstractStorageFactory<T> implements IStorageFactory{
      *         org.rb.qa.storage.simple.QA nqa = new org.rb.qa.storage.simple.QA(qa.getQuestion(), qa.getAnswer());
      *       tlst.add(nqa);
      *    }
+     *      knBaseS.setModifyTime(new Date());
      *    return knBaseS;
      * }
      * </pre>
@@ -81,12 +87,16 @@ public abstract class AbstractStorageFactory<T> implements IStorageFactory{
     /**
      * Convert T KNBase to org.​rb.​qa.​model.KNBase.
      * T is the same as KNBase but with specific fields annotations.
+     * T is better to keep in other  package then org.​rb.​qa.​model.KNBase.
+     * This method should also retrieve T's modify time and keep it in
+     * dataModifyDate field.
      * <pre>
      * Example:
      * --------
      * 
      * protected org.rb.qa.model.KNBase typeTtoKnBase(org.rb.qa.storage.simple.KNBase knBaseS) {
      *   org.rb.qa.model.KNBase knb = new org.rb.qa.model.KNBase();
+     *   this.dataModifyDate = knBaseS.getModifyTime();
      *   List<org.rb.qa.model.QA> tlst = knb.getQaList();
      *   for (org.rb.qa.storage.simple.QA qa : knBaseS.getQaList()) {
      *      org.rb.qa.model.QA nqa= new org.rb.qa.model.QA(qa.getQuestion(), qa.getAnswer());
@@ -116,5 +126,13 @@ public abstract class AbstractStorageFactory<T> implements IStorageFactory{
         ioStorage.save(xmlOs,knBaseSimple);  
     }
 
+    /**
+     * The modify time what has been got with last call of deSerialize()
+     * method.
+     * @return 
+     */
+     public Date getDataModifyDate() {
+        return dataModifyDate;
+    }
     
 }

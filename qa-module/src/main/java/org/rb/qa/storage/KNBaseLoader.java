@@ -12,7 +12,7 @@ import org.rb.qa.model.KNBase;
 
 
 /**
- * Uses XmlFactory to get application's xml deserializer
+ * Uses XmlFactory (IStorageFactory) to get application's xml deserializer
  * <pre>
  * !!! For Android use : load(InputStream is) only
  * </pre>

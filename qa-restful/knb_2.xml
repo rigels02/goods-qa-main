@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<knBase>
+<modifyTime>2018-03-17T12:48:46.508+02:00</modifyTime>
+<qaList>
+<QA>
+<Question>Question 1&#325;</Question>
+<Answer> Answer 1&#325;</Answer>
+</QA>
+<QA>
+<Question>Question 2&#325;</Question>
+<Answer> Answer 2&#325;</Answer>
+</QA>
+<QA>
+<Question>Question 3&#325;</Question>
+<Answer> Answer 3&#325;</Answer>
+</QA>
+</qaList>
+</knBase>
