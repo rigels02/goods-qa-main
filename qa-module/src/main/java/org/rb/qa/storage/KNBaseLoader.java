@@ -7,8 +7,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.rb.qa.model.KNBase;
-
-
+import org.rb.qa.model.QA;
 
 
 /**
@@ -31,7 +30,7 @@ public class KNBaseLoader {
         deserializerFactory  = factory; //Get XML Deserializer
         this.knBase = new KNBase();
        // this.knBase.setQaList(new LinkedList<>());
-       this.knBase.setQaList(new ArrayList<>());
+       this.knBase.setQaList(new ArrayList<QA>());
     }
    
    

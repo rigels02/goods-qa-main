@@ -38,12 +38,13 @@ private  KNBase knBase;
     }
     public KNBase makeCopy(){
         KNBase nknBase = new KNBase();
-        knBase.getQaList().forEach((qa) -> {
+        for (QA qa : knBase.getQaList()) {
             QA nqa = new QA();
             nqa.setQuestion(qa.getQuestion());
             nqa.setAnswer(qa.getAnswer());
             nknBase.getQaList().add(nqa);
-        });
+        }
+        
         return nknBase;
     }
     public int findIndexByQuestion(String question){
