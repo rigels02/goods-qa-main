@@ -26,7 +26,10 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.web.WebView;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 import javax.inject.Inject;
 import javax.xml.bind.JAXBException;
@@ -42,6 +45,8 @@ import org.rb.qa.ui.qaeditview.QaeditviewView;
 import org.rb.qa.ui.tools.Dialogs;
 import org.rb.qa.storage.StorageFactories;
 import org.rb.qa.storage.jaxb.JaxbFactory;
+import org.rb.qa.ui.restful.RestfulPresenter;
+import org.rb.qa.ui.restful.RestfulView;
 
 /**
  *
@@ -307,6 +312,31 @@ public class QaPresenter implements Initializable {
         File selection = fileChooser.showSaveDialog(stage);
         System.out.println("Selection = "+selection);
         return selection;
+    }
+    
+    
+      @FXML
+    void onRestfulServer(ActionEvent event) {
+        Scene oldScene = primaryStage.getScene();
+        Stage server = new Stage(StageStyle.UTILITY);
+        //Disable close button
+        server.setOnCloseRequest((WindowEvent e) -> {
+            e.consume();
+        });
+        server.initModality(Modality.APPLICATION_MODAL);
+        
+        RestfulView restfulView = new RestfulView();
+        RestfulPresenter restfulPresenter = (RestfulPresenter)restfulView.getPresenter();
+        
+        restfulPresenter.initData(primaryStage,server);
+        Scene scene = new Scene( restfulView.getView() );
+        //keep QaPresenter reference
+        //scene.setUserData(this);
+        // scene.getStylesheets().add("/styles/Styles.css");
+        server.setTitle( "Restful Server" );
+        server.setScene( scene );
+        server.show();
+    
     }
     
     @FXML

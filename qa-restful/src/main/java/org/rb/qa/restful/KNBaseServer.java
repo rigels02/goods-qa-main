@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ws.rs.core.UriBuilder;
+import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.simple.SimpleContainerFactory;
 import org.glassfish.jersey.simple.SimpleServer;
@@ -26,7 +27,7 @@ public class KNBaseServer<T> {
     private final Class<T> resource;
     private SimpleServer server;
     private Map<String, Object> properties;
-    
+    private String statusInfo;
    
 
     public KNBaseServer(Class<T> resource) {
@@ -61,9 +62,25 @@ public class KNBaseServer<T> {
          */
         public void runServer(){
             System.out.println("KNBaseServer starting ........");
+            statusInfo=null;
             //setStorageFactories();
             URI baseUri = UriBuilder.fromUri("http://localhost/").port(9998).build();
         ResourceConfig resourceConfig = new ResourceConfig(resource);
+        /**
+         * To avoid error: 
+         * 'MessageBodyWriter not found for media type=application/json'
+         * register JakcsonFeature class from package: org.​glassfish.​jersey.​jackson
+         * <pre>
+         * <dependency>
+         *   <groupId>org.glassfish.jersey.media</groupId>
+         *   <artifactId>jersey-media-json-jackson</artifactId>
+         *   <version>2.26</version>
+         *   <type>jar</type>
+         *</dependency>
+         * </pre>
+         * 
+         */
+        //resourceConfig.register(JacksonFeature.class);
         if(properties != null){
             resourceConfig.setProperties(properties);
         }
@@ -79,9 +96,12 @@ public class KNBaseServer<T> {
             
         } catch (Exception ex) {
             Logger.getLogger(KNBaseServer.class.getName()).log(Level.SEVERE, null, ex);
+            statusInfo= ex.getMessage()+"\n";
         }
-            System.out.println("SERVER RUNNING: "+baseUri.getHost()+" : "+baseUri.getPort()+
-                               "\n=================================");
+         String status = "SERVER RUNNING: "+baseUri.getHost()+" : "+baseUri.getPort();
+         statusInfo= (statusInfo==null)?"":statusInfo;
+         System.out.println(status + "\n=================================");
+            statusInfo+= status;
         }
         
         /**
@@ -89,7 +109,7 @@ public class KNBaseServer<T> {
          */
         public void stopServer(){
             System.out.println("Server stopping.....");
-       
+        statusInfo=null;
         Type sclazz = resource.getGenericSuperclass();
         Class<?> chkResource = resource;
         if(sclazz.getTypeName().contains("KNBaseResource")){
@@ -121,15 +141,26 @@ public class KNBaseServer<T> {
                }
          }   
         
-            
+            String status="";
             try {
                 server.close();
                 //jettyServer.stop();
             } catch (IOException ex) {
                 Logger.getLogger(KNBaseServer.class.getName()).log(Level.SEVERE, null, ex);
-            
+                status= ex.getMessage()+"\n";
             }
-            System.out.println("SERVER STOPPED!");
+            String stopMsg= "SERVER STOPPED!";
+            System.out.println(status + stopMsg );
+            statusInfo = status+stopMsg;
         }
-    
+
+    public String getStatusInfo() {
+        
+        return statusInfo;
+    }
+    public void resetStatusInfo(){
+     statusInfo = null;
+    }
+        
+   
 }

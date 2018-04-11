@@ -41,6 +41,12 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
         
+        <!-- Add QA-Restful module -->
+        <dependency>
+            <groupId>org.rb</groupId>
+            <artifactId>qa-restful</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         <!-- JAXB xml parser -->
         <dependency>
                <groupId>org.rb.mm</groupId>

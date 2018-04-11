@@ -33,6 +33,8 @@ import org.rb.qa.storage.StorageFactories;
 @Path("knbase")
 public class KNBaseResource implements IWriteAccessCounter{
 
+    public static final String NOTIFIER_NAME="notifier";
+    
     private static final String FILEPATH = "knb_1.xml";
     private static final String ID= "50f0f8f0-53ea-413c-b2a3-f3dc387709c0";
 
@@ -42,13 +44,18 @@ public class KNBaseResource implements IWriteAccessCounter{
     private static final String MSG_DATANULL = "KNB data == NULL!";
     private static final String MSG_POST_OK = "KNB data posted successfuly!";
     private static final String GETIDREQUESTED="ID Requested.";
+    private static final String RESOURCEINIT="Resurce KNBaseResource initiated...";
+     private static final String DATETIME="KNB date time: ";
     //----------------------------//
     private INotifier notifier;
+    private String ErrDetails;
     
     protected static AtomicInteger writeAccCounter = new AtomicInteger(0);
     
     @Context
     private Configuration config;
+   
+    
     
   
    
@@ -61,7 +68,8 @@ public class KNBaseResource implements IWriteAccessCounter{
     @PostConstruct
     public void init(){
         System.out.println("properties: "+config.getProperties());
-       notifier = (INotifier) config.getProperty("notifier");
+       notifier = (INotifier) config.getProperty(NOTIFIER_NAME);
+       notify(RESOURCEINIT);
     }
     
     /**
@@ -70,8 +78,10 @@ public class KNBaseResource implements IWriteAccessCounter{
      * @param msg 
      */
     private void notify(String msg){
-      if(notifier != null)
-          notifier.info(msg);
+      if(notifier != null){
+         String timeStamp = new Date().toString();
+          notifier.info(timeStamp+":\n"+msg);
+      }
     }
     
     @GET
@@ -97,6 +107,7 @@ public class KNBaseResource implements IWriteAccessCounter{
                     .loadFromFile(fileName);
         } catch (Exception ex) {
             Logger.getLogger(KNBaseResource.class.getName()).log(Level.SEVERE, null, ex);
+            ErrDetails = ex.getMessage();
             return null;
         }
         return knb;
@@ -120,9 +131,9 @@ public class KNBaseResource implements IWriteAccessCounter{
         if(knb!=null){
          
          Logger.getLogger(KNBaseResource.class.getName()).log(Level.INFO, MSG_DWNL);
-            notify(MSG_DWNL);
+            notify(MSG_DWNL+", QA records number= "+knb.getQaList().size());
         }else {
-          notify(MSG_NOT_DWNL);
+          notify(MSG_NOT_DWNL+" : "+ErrDetails);
         }
         return knb;
     }
@@ -197,7 +208,7 @@ public class KNBaseResource implements IWriteAccessCounter{
         }
          writeAccCounter.decrementAndGet();
         Logger.getLogger(KNBaseResource.class.getName()).log(Level.INFO, MSG_POST_OK);
-        notify(MSG_POST_OK);
+        notify(MSG_POST_OK+", QA records number= "+knb.getQaList().size());
         return Response.ok(MSG_POST_OK).build();
     }
     
@@ -222,6 +233,7 @@ public class KNBaseResource implements IWriteAccessCounter{
          Logger.getLogger(KNBaseResource.class.getName()).log(Level.SEVERE, null, ex);
             notify("Error: "+ex.getMessage());
         }
+        notify(DATETIME+modTime);
         return modTime;
     }
  

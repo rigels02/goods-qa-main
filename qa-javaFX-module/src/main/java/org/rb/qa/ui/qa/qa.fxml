@@ -34,6 +34,11 @@
             <MenuItem mnemonicParsing="false" onAction="#onQuit" text="Quit" />
           </items>
         </Menu>
+            <Menu mnemonicParsing="false" text="Services">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#onRestfulServer" text="Restful Server" />
+              </items>
+            </Menu>
         <Menu mnemonicParsing="false" text="Help">
           <items>
             <MenuItem mnemonicParsing="false" text="About Questions &amp; Answers" />
