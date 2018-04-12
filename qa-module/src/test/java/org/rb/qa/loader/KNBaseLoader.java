@@ -18,6 +18,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import org.rb.qa.model.KNBase;
 import org.rb.mm.interfaces.IStorage;
+import org.rb.qa.model.QA;
 
 
 
@@ -36,7 +37,7 @@ public class KNBaseLoader {
         deserializer  = parser; //Get XML Deserializer
         this.knBase = new KNBase();
        // this.knBase.setQaList(new LinkedList<>());
-       this.knBase.setQaList(new ArrayList<>());
+       this.knBase.setQaList(new ArrayList<QA>());
     }
    
    

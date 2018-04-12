@@ -54,7 +54,7 @@ public class KNBaseLoaderTest {
     public void testWriteRead() throws JAXBException, FileNotFoundException, IOException{
     
         KNBase base = new KNBase();
-        base.setQaList(new ArrayList<>());
+        base.setQaList(new ArrayList<QA>());
         //GIVEN:
         base.getQaList().add(new QA("Question31", "Answer31"));
         base.getQaList().add(new QA("Question32", "Answer32"));
@@ -67,10 +67,13 @@ public class KNBaseLoaderTest {
         ma.marshal(base, new File(testFile));
         //THEN:
         assertTrue(Files.exists(Paths.get(testFile)));
-        Stream<String> str = Files.lines(Paths.get(testFile));
-        List<String> lst = str.collect(Collectors.toList());
+        List<String> lst = Files.readAllLines(Paths.get(testFile));
+        
         assertTrue(lst.size()>0);
-        lst.forEach(e-> System.out.println("->>"+e));
+        for (String string : lst) {
+            System.out.println("->>"+string);
+        }
+       
         //--------Read
         //Given: file
         Unmarshaller um = context.createUnmarshaller();
@@ -129,7 +132,7 @@ public class KNBaseLoaderTest {
         //TODO
       KNBase base = new KNBase();
         //base.setQaList(new LinkedList<>());
-        base.setQaList(new ArrayList<>());
+        base.setQaList(new ArrayList<QA>());
         final int num= 10000;
         final int count=0;
         final int loops= 100;

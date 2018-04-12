@@ -112,7 +112,10 @@ public class QAGeneratorTest {
         KNBaseEditor.take(workBase).add(idx,new QA("Q2", "A2"));
          KNBaseEditor.take(workBase).delete(idx);
          assertEquals(result, workBase);
-         workBase.getQaList().forEach(qa-> System.out.println("->"+qa.toString()));
+         for (QA qa : workBase.getQaList()) {
+            System.out.println("->"+qa.toString());
+        }
+         
     }
 
     @Test
