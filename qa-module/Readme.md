@@ -5,6 +5,8 @@ https://www.mkyong.com/tutorials/java-xml-tutorials/?utm_source=mkyong&utm_mediu
 https://stackoverflow.com/questions/31656836/markdown-support-in-android-textview
 http://brainlow.blogspot.com/2012/10/javafx-markdown-viewer.html
 http://simple.sourceforge.net/
+Questions from:
+https://www.edureka.co/blog/interview-questions/java-interview-questions/#basic
 
 Technologies
 ------------
