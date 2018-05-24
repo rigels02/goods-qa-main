@@ -12,7 +12,7 @@ import org.rb.qa.utils.Resources;
  */
 public class InitKNBase {
 
-    public final static String knbXML = "knb.xml";
+    private static String knbXML = "knb.xml";
     
     
     /**
@@ -62,6 +62,15 @@ public class InitKNBase {
     private InitKNBase() {
     }
 
+    public static String getKnbXML() {
+        return knbXML;
+    }
+
+    static void setKnbXML(String knbXML) {
+        InitKNBase.knbXML = knbXML;
+    }
+
+    
     public static boolean isAndroid(){
       return System.getProperty("java.vm.name").equalsIgnoreCase("Dalvik");
     }

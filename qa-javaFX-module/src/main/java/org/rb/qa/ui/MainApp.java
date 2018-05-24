@@ -100,7 +100,7 @@ public class MainApp extends Application implements IReloadAppDataConfig{
     @Override
     public void reloadAppDataConfig() throws Exception{
         
-        KNBaseSaver.take(knBase, StorageFactories.take().getFactory()).save(InitKNBase.knbXML);
+        KNBaseSaver.take(knBase, StorageFactories.take().getFactory()).save(InitKNBase.getKnbXML());
         
         initAppDataConfig();
     }
