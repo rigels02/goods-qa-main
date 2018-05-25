@@ -29,7 +29,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#onExportKNBase" text="Export KNBase" />
                   <MenuItem mnemonicParsing="false" onAction="#onExportBySimpleXml" text="Export KNBase by SimpleXml " />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Preferences…" />
+            <MenuItem mnemonicParsing="false" onAction="#onPreferencesSelected" text="Preferences…" />
             <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem mnemonicParsing="false" onAction="#onQuit" text="Quit" />
           </items>

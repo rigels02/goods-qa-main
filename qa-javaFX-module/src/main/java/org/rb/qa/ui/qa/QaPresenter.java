@@ -2,9 +2,12 @@ package org.rb.qa.ui.qa;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,6 +19,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -33,12 +38,14 @@ import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 import javax.inject.Inject;
 import javax.xml.bind.JAXBException;
+import org.rb.qa.model.KNBase;
 import org.rb.qa.storage.StorageType;
 import org.rb.qa.storage.KNBaseSaver;
 import org.rb.qa.model.QA;
 import org.rb.qa.service.DocType;
 import org.rb.qa.service.KNBaseEditor;
 import org.rb.qa.service.QAGenerator;
+import org.rb.qa.storage.InitKNBaseMulti;
 import org.rb.qa.ui.MainApp;
 import org.rb.qa.ui.qaeditview.QaeditviewPresenter;
 import org.rb.qa.ui.qaeditview.QaeditviewView;
@@ -339,6 +346,50 @@ public class QaPresenter implements Initializable {
     
     }
     
+    
+    @FXML
+    void onPreferencesSelected(ActionEvent event) {
+        List<String> titles = InitKNBaseMulti.getKnbTitles();
+        List<String> files = InitKNBaseMulti.getKnbFiles();
+        int selected = InitKNBaseMulti.getKnbIdx();
+        List<String> selectionList = new ArrayList<>();
+        for (int i=0; i< titles.size(); i++) {
+            selectionList.add(String.format("%s (%s)", titles.get(i),files.get(i)));
+        }
+        
+        ChoiceDialog<String> dialog = new ChoiceDialog<>(selectionList.get(selected),selectionList);
+        dialog.setTitle("Selecte KNB file");
+        dialog.setHeaderText("Choice KNB:");
+        Optional<String> result = dialog.showAndWait();
+        if(result.isPresent()){
+            System.out.println("file selected: "+result.get());
+            String choosen = result.get();
+            int idx = selectionList.indexOf(choosen);
+            try {
+                InitKNBaseMulti.setKnbXML(idx);
+            } catch (IOException ex) {
+                Logger.getLogger(QaPresenter.class.getName()).log(Level.SEVERE, null, ex);
+                Alert errDlg = new Alert(Alert.AlertType.ERROR);
+                errDlg.setContentText("Error to save selection: "+ex.getMessage());
+                errDlg.showAndWait();
+                return;
+            }
+            KNBase knBase= null;
+            try {
+                //TODO load selected KNB data
+              knBase =  InitKNBaseMulti.go(StorageFactories.take().getFactory());
+            } catch (Exception ex) {
+                Logger.getLogger(QaPresenter.class.getName()).log(Level.SEVERE, null, ex);
+                Alert errDlg = new Alert(Alert.AlertType.ERROR);
+                errDlg.setContentText("Error to load knBase: "+ex.getMessage());
+                errDlg.showAndWait();
+                return;
+            }
+            qaGenerator.setKnBase(knBase);
+            updateListView();
+        }
+    }
+
     @FXML
     void onQuit(ActionEvent event) {
         Platform.exit();

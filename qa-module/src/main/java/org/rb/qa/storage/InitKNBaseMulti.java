@@ -1,13 +1,13 @@
 package org.rb.qa.storage;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 import org.rb.qa.model.KNBase;
 
 /**
  * Init KNBase if multiple knb.xml files are available.
- * Dependency from KNBSelector class and InitKNBase class.
+ * Manage KNBase file selection.
+ * Dependency from KNBSelector and InitKNBase classes.
  * @author raitis
  */
 public class InitKNBaseMulti {
@@ -35,10 +35,25 @@ public class InitKNBaseMulti {
         return InitKNBase.create(storageFactory);
     }
     
+    /**
+     * Get selected KNBase file name.
+     * @return 
+     */
     public static String getKnbXML() {
         return new KNBSelector().getSelectedFile();
     }
-
+    public static int getKnbIdx(){
+     return new KNBSelector().getSelectedIdx();
+    }
+    /**
+     * Select KNBase file by index.
+     * The allowed indexes are bounded into the List of KnbTitles or KnbFiles.
+     * To get the list use methods  getKnbTitles() or getKnbFiles().
+     * @see getKnbTitles()
+     * @see getKnbFiles()
+     * @param knbXMLFileIndex
+     * @throws IOException 
+     */
     public static void setKnbXML(int knbXMLFileIndex) throws IOException {
         KNBSelector knbSelector = new KNBSelector();
         knbSelector.setSelectedKnb(knbXMLFileIndex);
@@ -46,9 +61,17 @@ public class InitKNBaseMulti {
         
     }
     
+    /**
+     * Get all available KNBase files titles.
+     * @return 
+     */
      public static List<String> getKnbTitles(){
        return new KNBSelector().getTitles();
     }
+     /**
+      * Get all available KNBase files filename.
+      * @return 
+      */
     public static List<String> getKnbFiles(){
       return new KNBSelector().getFiles();
     }

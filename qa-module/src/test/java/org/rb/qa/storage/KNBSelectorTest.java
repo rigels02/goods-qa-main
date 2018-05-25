@@ -129,6 +129,9 @@ public class KNBSelectorTest {
         InitKNBaseMulti.setKnbXML(1);
         KNBase knb4= InitKNBaseMulti.go(StorageFactories.take().getFactory());
         assertTrue(InitKNBaseMulti.getKnbXML().equals("knb_cpp.xml"));
+        InitKNBaseMulti.setKnbXML(0);
+        InitKNBaseMulti.go(StorageFactories.take().getFactory());
+        assertTrue(InitKNBaseMulti.getKnbXML().equals("knb.xml"));
         fi = new File("knb1.xml");
          if(fi.exists()){
           fi.delete();

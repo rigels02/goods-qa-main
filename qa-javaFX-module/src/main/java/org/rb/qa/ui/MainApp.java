@@ -14,6 +14,7 @@ import org.rb.qa.storage.KNBaseSaver;
 import org.rb.qa.model.KNBase;
 import org.rb.qa.service.QAGenerator;
 import org.rb.qa.storage.IStorageFactory;
+import org.rb.qa.storage.InitKNBaseMulti;
 import org.rb.qa.storage.StorageType;
 import org.rb.qa.storage.jaxb.JaxbFactory;
 import org.rb.qa.storage.simple.SimpleFactory;
@@ -34,7 +35,9 @@ public class MainApp extends Application implements IReloadAppDataConfig{
     private void initAppDataConfig() throws Exception{
     
         
-        knBase = InitKNBase.go(StorageFactories.take().getFactory());
+        //knBase = InitKNBase.go(StorageFactories.take().getFactory());
+        knBase = InitKNBaseMulti.go(StorageFactories.take().getFactory());
+        
         //By adding new QA or modify existing QA the modifcation is going
         //to be saved. As result this initAppDataConfig() is called to update
         //application data

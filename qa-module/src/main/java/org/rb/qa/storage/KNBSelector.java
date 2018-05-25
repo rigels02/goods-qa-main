@@ -108,4 +108,8 @@ final class KNBSelector {
     String getSelectedFile(){
       return FILES[selectedKnb];
     }
+
+    int getSelectedIdx() {
+        return this.selectedKnb;
+    }
 }
