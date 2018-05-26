@@ -56,7 +56,7 @@ public class MainApp extends Application implements IReloadAppDataConfig{
         //context.put( "noteService", new InMemoryNoteService() );
         //context.put("knBaseEditor",knBaseEditor);
         //context.put("knBaseSaver",knBaseSaver);
-        context.put("knBase",knBase);
+        //context.put("knBase",knBase);
         context.put("qaGenerator",qaGenerator);
         context.put("primaryStage",primaryStage);
         context.put("backScene",null);
@@ -103,7 +103,7 @@ public class MainApp extends Application implements IReloadAppDataConfig{
     @Override
     public void reloadAppDataConfig() throws Exception{
         
-        KNBaseSaver.take(knBase, StorageFactories.take().getFactory()).save(InitKNBase.getKnbXML());
+        KNBaseSaver.take(qaGenerator.getKnBase(), StorageFactories.take().getFactory()).save(InitKNBase.getKnbXML());
         
         initAppDataConfig();
     }

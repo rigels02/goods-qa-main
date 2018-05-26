@@ -1,6 +1,5 @@
 package org.rb.qa.ui.qaeditview;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -13,7 +12,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javax.inject.Inject;
-import org.rb.qa.model.KNBase;
 import org.rb.qa.model.QA;
 import org.rb.qa.service.KNBaseEditor;
 import org.rb.qa.service.QAGenerator;
@@ -33,9 +31,11 @@ public class QaeditviewPresenter implements Initializable {
     
     @Inject 
     QAGenerator qaGenerator;        
-         
-    @Inject
-    KNBase knBase;
+     
+   //Do not use knBase injection. Instead use qaGenerator to get current selected
+   //knbase file, because qaGenerator must always keep currently selected knb file.
+   // @Inject
+   // KNBase knBase;
     
     Scene previousScene;
     
@@ -88,9 +88,9 @@ public class QaeditviewPresenter implements Initializable {
         String answerTxt = f_answerTxtArea.getText().trim();
         QA qa = new QA(f_questionTxtField.getText().trim(),answerTxt );
         if(questionIdx== -1){
-            KNBaseEditor.take(knBase).add(qa);
+            KNBaseEditor.take(qaGenerator.getKnBase()).add(qa);
         }else {
-        KNBaseEditor.take(knBase).add(questionIdx, qa);
+        KNBaseEditor.take(qaGenerator.getKnBase()).add(questionIdx, qa);
         }
         try {
             MainApp.app.reloadAppDataConfig();
