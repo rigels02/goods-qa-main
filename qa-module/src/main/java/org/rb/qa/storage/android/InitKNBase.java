@@ -12,7 +12,6 @@ import java.io.InputStream;
  */
 public class InitKNBase {
    
-    public final static String knbXML = "knb.xml";
 
     private static InputStream androidResourceInputStream;
 

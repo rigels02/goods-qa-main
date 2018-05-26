@@ -36,6 +36,14 @@ public class InitKNBaseMulti {
     }
     
     /**
+     * Get selected KNBase title.
+     * @return 
+     */
+    public static String getKnbTitle(){
+      return new KNBSelector().getSelectedTitle();
+    }
+    
+    /**
      * Get selected KNBase file name.
      * @return 
      */

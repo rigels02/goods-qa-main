@@ -2,14 +2,10 @@ package org.rb.qa.storage;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,17 +16,12 @@ import java.util.logging.Logger;
  * properties file.
  * The property file contains information about currently selected knb file.
  * /and list of information about knb file's title and filename./
+ * Uses constants interface KNBSelectorConst.java
  * 
  * @author raitis
  */
 final class KNBSelector {
     public final static String propFile = "knbs.prop";
-    
-    
-    private final static String KEYS[] = {"knb.title","knb.file","knb.selected"};
-    private final static String TITLES[] = {"Java KNB","C/C++ KNB"};
-    // !!TITLES[i] related to FILES[i]           |            |
-    private final static String FILES[] = {"knb.xml","knb_cpp.xml"};
     
     
     private int selectedKnb = 0;
@@ -60,14 +51,14 @@ final class KNBSelector {
         while(sc.hasNextLine()){
             String line = sc.nextLine().trim();
             String[] tokens = line.split("=");
-            if(!tokens[0].equals(KEYS[2]))
+            if(!tokens[0].equals(KNBSelectorConst.KEYS[2]))
                 throw new RuntimeException("Wrong key token!");
             selectedKnb = Integer.parseInt(tokens[1]);
         }
     }
     private void writeProperties(int knbFileSelected) throws IOException{
         
-        if( knbFileSelected < 0 || knbFileSelected> FILES.length-1 )
+        if( knbFileSelected < 0 || knbFileSelected> KNBSelectorConst.FILES.length-1 )
                throw new IOException("No Such KNB file's Index: "+knbFileSelected);
        
         //write to file
@@ -76,7 +67,7 @@ final class KNBSelector {
         fi.createNewFile();
         PrintWriter writer = new PrintWriter(fi);
         
-        writer.format("%s=%s\n", KEYS[2],knbFileSelected);
+        writer.format("%s=%s\n", KNBSelectorConst.KEYS[2],knbFileSelected);
         writer.flush();
         writer.close();
         this.selectedKnb = knbFileSelected;
@@ -94,19 +85,19 @@ final class KNBSelector {
     }
     
     List<String> getTitles(){
-       return Arrays.asList(TITLES);
+       return Arrays.asList(KNBSelectorConst.TITLES);
     }
     
     List<String> getFiles(){
-      return Arrays.asList(FILES);
+      return Arrays.asList(KNBSelectorConst.FILES);
     }
     
     String getSelectedTitle(){
-       return TITLES[selectedKnb];
+       return KNBSelectorConst.TITLES[selectedKnb];
     }
     
     String getSelectedFile(){
-      return FILES[selectedKnb];
+      return KNBSelectorConst.FILES[selectedKnb];
     }
 
     int getSelectedIdx() {

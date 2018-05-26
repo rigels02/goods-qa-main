@@ -125,6 +125,7 @@ public class QaPresenter implements Initializable {
         mdQuestions = 0;
         Date lastModified = ((JaxbFactory)StorageFactories.take().getFactory()).getDataModifyDate();
         totalQuestions = qaGenerator.getKnBase().getQaList().size();
+        String selectedKnb = String.format("%s(%s)", InitKNBaseMulti.getKnbXML(),InitKNBaseMulti.getKnbTitle());
         for (QA qa : qaGenerator.getKnBase().getQaList()) {
             DocType type = qaGenerator.getAnswerDocType(qa.getAnswer());
             //type == DocType.HTML
@@ -138,8 +139,8 @@ public class QaPresenter implements Initializable {
                     
             }
         }
-        fmainInfo.setText(String.format("Total Questions:%d, HTML= %d, MD= %d, Modified: %s",
-                totalQuestions, htmlQuestion, mdQuestions,lastModified));
+        fmainInfo.setText(String.format("Total Questions:%d, HTML= %d, MD= %d, Modified: %s, Selected: %s",
+                totalQuestions, htmlQuestion, mdQuestions,lastModified,selectedKnb));
     }
     
     public void updateListView(){
