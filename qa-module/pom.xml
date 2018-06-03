@@ -10,6 +10,12 @@
     <packaging>jar</packaging>
     <dependencies>
        
+        <!-- Data files module -->
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>qa-data</artifactId>
+            <version>${project.version}</version>
+        </dependency> 
         <!-- For markdown conversion -->
         <dependency>
             <groupId>com.atlassian.commonmark</groupId>
