@@ -26,6 +26,11 @@
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </HBox.margin>
                   </Button>
+                  <Button mnemonicParsing="false" onAction="#onEmbedImage" text="Embed Image">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="50.0" right="10.0" top="5.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
             </HBox>
          </children>

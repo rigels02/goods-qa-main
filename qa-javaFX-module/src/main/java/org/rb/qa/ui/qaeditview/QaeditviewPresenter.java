@@ -1,5 +1,7 @@
 package org.rb.qa.ui.qaeditview;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -10,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.inject.Inject;
 import org.rb.qa.model.QA;
@@ -17,6 +20,8 @@ import org.rb.qa.service.KNBaseEditor;
 import org.rb.qa.service.QAGenerator;
 import org.rb.qa.ui.MainApp;
 import org.rb.qa.ui.qa.QaPresenter;
+import org.rb.qa.ui.tools.Dialogs;
+import org.rb.qa.ui.tools.ImageCoding;
 
 /**
  *
@@ -105,5 +110,32 @@ public class QaeditviewPresenter implements Initializable {
       primaryStage.setTitle( "QuestionsAnswers" );
       
        
+    }
+    
+     @FXML
+    void onEmbedImage(ActionEvent event) {
+        String imgPath = getImageFile(null);
+        String htmlImgTag = null;
+        try {
+            htmlImgTag = ImageCoding.embeddedImageHtmlTag(imgPath);
+        } catch (IllegalArgumentException | IOException ex) {
+            Logger.getLogger(QaeditviewPresenter.class.getName()).log(Level.SEVERE, null, ex);
+            Dialogs.popupError("Error", ex.getMessage());
+            return;
+        }
+        int cursorIdx = f_answerTxtArea.getCaretPosition();
+        f_answerTxtArea.insertText(cursorIdx, htmlImgTag);
+    }
+    
+    private String getImageFile(String title){
+    if(title==null || title.isEmpty()){
+          title = "Select Image File";
+        }
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle(title);
+        Stage stage = new Stage();
+        File selection = fileChooser.showOpenDialog(stage);
+        System.out.println("Selection = "+selection.getPath());
+        return selection.getPath();
     }
 }
