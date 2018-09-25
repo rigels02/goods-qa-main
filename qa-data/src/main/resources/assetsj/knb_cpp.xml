@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <knBase>
-<modifyTime>2018-06-02T20:58:07.844+03:00</modifyTime>
+<modifyTime>2018-06-03T19:17:43.694+03:00</modifyTime>
 <qaList>
 <QA>
 <Question>Q1.What is C++?</Question>
@@ -171,13 +171,93 @@ Some people confused about Encapsulation and abstraction. But they both are diff
 - Inheritance: Inheritance is used to inherit the property of one class into another class. It facilitates you to define one class in term of another class.</Answer>
 </QA>
 <QA>
-<Question>Q9. Put Question here...</Question>
-<Answer>&lt;html&gt;
-&lt;body&gt;
-&lt;h1&gt;Image test&lt;/h1&gt;
-&lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAM0AAADNCAMAAAAsYgRbAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABJQTFRF3NSmzMewPxIG//ncJEJsldTou1jHgAAAARBJREFUeNrs2EEKgCAQBVDLuv+V20dENbMY831wKz4Y/VHb/5RGQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0PzMWtyaGhoaGhoaGhoaGhoaGhoxtb0QGhoaGhoaGhoaGhoaGhoaMbRLEvv50VTQ9OTQ5OpyZ01GpM2g0bfmDQaL7S+ofFC6xv3ZpxJiywakzbvd9r3RWPS9I2+MWk0+kbf0Hih9Y17U0nTHibrDDQ0NDQ0NDQ0NDQ0NDQ0NTXbRSL/AK72o6GhoaGhoRlL8951vwsNDQ0NDQ1NDc0WyHtDTEhDQ0NDQ0NTS5MdGhoaGhoaGhoaGhoaGhoaGhoaGhoaGposzSHAAErMwwQ2HwRQAAAAAElFTkSuQmCC" alt="img" /&gt;
-&lt;/body&gt;
-&lt;/html&gt;</Answer>
+<Question>Q9. What is the difference between array and a list?</Question>
+<Answer>## What is the difference between array and a list?
+- Array is a collection of homogeneous elements while list is a collection of heterogeneous elements.
+- Array memory allocation is static and continuous while List memory allocation is dynamic and random.
+ - In Array, users don&#8217;t need to keep in track of next memory allocation while In list user has to keep in track of next location where memory is allocated.</Answer>
+</QA>
+<QA>
+<Question>Q10. What is the difference between new() and malloc()?</Question>
+<Answer>## What is the difference between new() and malloc()?
+- new() is a preprocessor while malloc() is a function.
+- There is no need to allocate the memory while using &#8220;new&#8221; but in malloc() you have to use sizeof().
+-  &#8220;new&#8221; initializes the new memory to 0 while malloc() gives random value in the newly allotted memory location.</Answer>
+</QA>
+<QA>
+<Question>Q11. What is the error in the code below and how should it be corrected?</Question>
+<Answer>## What is the error in the code below and how should it be corrected?
+~~~~
+my_struct_t *bar;
+
+/* &#8230; do stuff, including setting bar to point to a defined my_struct_t object &#8230; */
+
+memset(bar, 0, sizeof(bar));
+~~~~
+The last argument to memset should be sizeof(*bar), not sizeof(bar). sizeof(bar) calculates the size of bar (i.e., the pointer itself) rather than the size of the structure pointed to by bar.
+
+The code can therefore be corrected by using sizeof(*bar) as the last argument in the call to memset.
+A sharp candidate might point out that using *bar will cause a dereferencing error if bar has not been assigned. Therefore an even safer solution would be to use sizeof(my_struct_t). ```However, an even sharper candidate must know that in this case using *bar is absolutely safe within the call to sizeof, even if bar has not been initialized yet, since sizeof is a compile time construct.```</Answer>
+</QA>
+<QA>
+<Question>Q12. What will i and j equal after the code below is executed? Explain your answer.</Question>
+<Answer>## What will i and j equal after the code below is executed? Explain your answer.
+~~~
+int i = 5;
+int j = i++;
+~~~
+After the above code executes, i will equal 6, but j will equal 5.
+
+Understanding the reason for this is fundamental to understanding how the unary increment (++) and decrement (&#8211;) operators work in C++.
+
+When these operators precede a variable, the value of the variable is modified first and then the modified value is used. For example, if we modified the above code snippet to instead say int j = ++i;, i would be incremented to 6 and then j would be set to that modified value, so both would end up being equal to 6.
+
+However, when these operators follow a variable, the unmodified value of the variable is used and then it is incremented or decremented. That&#8217;s why, in the statement int j = i++; in the above code snippet, j is first set to the unmodified value of i(i.e., 5) and then i is incremented to 6.</Answer>
+</QA>
+<QA>
+<Question>Q13. Assuming buf is a valid pointer, what is the problem in the code below? What would be an alternate way of implementing this that would avoid the problem?</Question>
+<Answer>## Assuming buf is a valid pointer, what is the problem in the code below? What would be an alternate way of implementing this that would avoid the problem?
+~~~
+size_t sz = buf-&gt;size();
+while ( &#8211;sz &gt;= 0 )
+{
+/* do something */
+}
+~~~
+The problem in the above code is that &#8211;sz &gt;= 0 will always be true so you&#8217;ll never exit the while loop.
+The reasons that &#8211;sz &gt;= 0 will always be true is that the type of sz is size_t. **size_t is really just an alias to one of the fundamental unsigned integer types. Therefore, since sz is unsigned, it can never be less than zero (so the condition can never be true).**
+
+One example of an alternative implementation that would avoid this problem would be to instead use a for loop as follows:
+~~~
+for (size_t i = 0; i &lt; sz; i++)
+{
+/* do something */
+}
+~~~</Answer>
+</QA>
+<QA>
+<Question>Q14. Implement a template function IsDerivedFrom() that takes class C and class P as template parameters. It should return true when class C is derived from class P and false otherwise.</Question>
+<Answer>## Implement a template function IsDerivedFrom() that takes class C and class P as template parameters. It should return true when class C is derived from class P and false otherwise.
+To be...</Answer>
+</QA>
+<QA>
+<Question>Q15. Explain what is the use of void main () in C++ language?</Question>
+<Answer>## Explain what is the use of void main () in C++ language?
+To run the C++ application it involves two steps, the first step is a compilation where conversion of C++ code to object code take place. While second step includes linking, where combining of object code from the programmer and from libraries takes place. This function is operated by main () in C++ language.</Answer>
+</QA>
+<QA>
+<Question>Q16. Explain what is C++ objects?</Question>
+<Answer>## Explain what is C++ objects?
+Class gives blueprints for object, so basically an object is created from a class or in other words an object is an instance of a class. The data and functions are bundled together as a self-contained unit called an object. Here, in the example A and B is the Object.
+For example:
+```
+Class Student
+{
+Public:
+Int rollno;
+String name;
+} A, B;
+```</Answer>
 </QA>
 </qaList>
 </knBase>
