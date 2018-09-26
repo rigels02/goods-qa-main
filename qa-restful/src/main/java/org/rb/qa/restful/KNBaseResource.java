@@ -44,8 +44,10 @@ public class KNBaseResource implements IWriteAccessCounter{
     private static final String MSG_DATANULL = "KNB data == NULL!";
     private static final String MSG_POST_OK = "KNB data posted successfuly!";
     private static final String GETIDREQUESTED="ID Requested.";
-    private static final String RESOURCEINIT="Resurce KNBaseResource initiated...";
-     private static final String DATETIME="KNB date time: ";
+    private static final String RESOURCEINIT="Resource KNBaseResource initiated...";
+    private static final String DATETIME="KNB date time: ";
+     private static final String KNBFILE="KNB file: ";
+     
     //----------------------------//
     private INotifier notifier;
     private String ErrDetails;
@@ -54,6 +56,7 @@ public class KNBaseResource implements IWriteAccessCounter{
     
     @Context
     private Configuration config;
+   
    
     
     
@@ -131,7 +134,8 @@ public class KNBaseResource implements IWriteAccessCounter{
         if(knb!=null){
          
          Logger.getLogger(KNBaseResource.class.getName()).log(Level.INFO, MSG_DWNL);
-            notify(MSG_DWNL+", QA records number= "+knb.getQaList().size());
+            
+            notify(KNBFILE+fileName+MSG_DWNL+", QA records number= "+knb.getQaList().size());
         }else {
           notify(MSG_NOT_DWNL+" : "+ErrDetails);
         }
@@ -220,12 +224,16 @@ public class KNBaseResource implements IWriteAccessCounter{
     @GET
     @Path("/date")
     @Produces(MediaType.APPLICATION_JSON)
-    public Date getModifyTime(@QueryParam("file") String fileName){
+    public Long getModifyTime(@QueryParam("file") String fileName){
         if(fileName==null || fileName.isEmpty()){
           fileName = FILEPATH;
         }
          Date modTime =null;
-         loadKNBaseData(fileName);
+        KNBase knb = loadKNBaseData(fileName);
+        if(knb == null){
+            notify("Error: Requested file: "+fileName+" not found!");
+            return null;
+        }
         try { 
          //Retrieve the modify date what has been got by last loadKNBaseData call.   
          modTime = ((AbstractStorageFactory)StorageFactories.take().getFactory()).getDataModifyDate();
@@ -233,8 +241,9 @@ public class KNBaseResource implements IWriteAccessCounter{
          Logger.getLogger(KNBaseResource.class.getName()).log(Level.SEVERE, null, ex);
             notify("Error: "+ex.getMessage());
         }
-        notify(DATETIME+modTime);
-        return modTime;
+        
+        notify(KNBFILE+fileName+DATETIME+modTime);
+        return modTime.getTime();
     }
  
     
