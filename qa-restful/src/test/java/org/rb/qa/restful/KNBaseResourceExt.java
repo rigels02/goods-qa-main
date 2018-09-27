@@ -102,7 +102,7 @@ public class KNBaseResourceExt extends KNBaseResource{
     @Path("/date")
     @Produces(MediaType.APPLICATION_JSON)
      @Override
-    public Date getModifyTime(@QueryParam("file") String fileName){
+    public Long getModifyTime(@QueryParam("file") String fileName){
         
         return super.getModifyTime(fileName);
     }
