@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <knBase>
-<modifyTime>2018-05-02T11:10:32.833+03:00</modifyTime>
+<modifyTime>2018-10-27T20:41:34.326+03:00</modifyTime>
 <qaList>
 <QA>
 <Question>Q1. Explain JVM, JRE and JDK?</Question>
@@ -2419,6 +2419,37 @@ verdana, geneva, sans-serif;"&gt;Threads are dependent.&lt;/span&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;table  cellspacing="2" cellpadding="2" border="1"&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td valign="top"&gt;Per process Items&lt;br&gt;
+&lt;/td&gt;
+&lt;td valign="top"&gt;Per Thread Items&lt;br&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td valign="top"&gt;Address space&lt;br&gt;
+Global variables&lt;br&gt;
+Open files&lt;br&gt;
+Child processes&lt;br&gt;
+Pending alarms&lt;br&gt;
+Signals and signal handlers&lt;br&gt;
+Accounting information&lt;br&gt;
+&lt;/td&gt;
+&lt;td valign="top"&gt;Program counter&lt;br&gt;
+Registers&lt;br&gt;
+Stack&lt;br&gt;
+State&lt;br&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;br&gt;
+&lt;ul&gt;
+&lt;li&gt;Items shared by all threads in process (column 1)&lt;/li&gt;
+&lt;li&gt;Items private to each thread (column 2)&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/body&gt;
 &lt;/html&gt;</Answer>
 </QA>
