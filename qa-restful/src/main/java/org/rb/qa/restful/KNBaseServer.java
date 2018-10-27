@@ -2,7 +2,9 @@ package org.rb.qa.restful;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.net.InetAddress;
 import java.net.URI;
+import java.net.UnknownHostException;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -63,8 +65,14 @@ public class KNBaseServer<T> {
         public void runServer(){
             System.out.println("KNBaseServer starting ........");
             statusInfo=null;
+            String ip=null;
+        try {
             //setStorageFactories();
-            URI baseUri = UriBuilder.fromUri("http://localhost/").port(9998).build();
+            ip = InetAddress.getLocalHost().getHostAddress();
+        } catch (UnknownHostException ex) {
+            Logger.getLogger(KNBaseServer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            URI baseUri = UriBuilder.fromUri("http://"+ip+"/").port(9998).build();
         ResourceConfig resourceConfig = new ResourceConfig(resource);
         /**
          * To avoid error: 
