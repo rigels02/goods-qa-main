@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <knBase>
-<modifyTime>2018-10-27T20:41:34.326+03:00</modifyTime>
+<modifyTime>2018-10-28T19:50:12.258+02:00</modifyTime>
 <qaList>
 <QA>
 <Question>Q1. Explain JVM, JRE and JDK?</Question>
@@ -2473,7 +2473,99 @@ Yes, finally will not be executed if the program exits either by calling System.
 Synchronization refers to multi-threading. A synchronized block of code can be executed by only one thread at a time. As Java supports execution of multiple threads, two or more threads may access the same fields or objects. Synchronization is a process which keeps all concurrent threads in execution to be in sync. Synchronization avoids memory consistency errors caused due to inconsistent view of shared memory. When a method is declared as synchronized the thread holds the monitor for that method&#8217;s object. If another thread is executing the synchronized method the thread is blocked until that thread releases the monitor.</Answer>
 </QA>
 <QA>
-<Question>Q75. Where these question come from?</Question>
+<Question>Q75. Access Modifiers in Java</Question>
+<Answer>&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv="content-type" content="text/html; charset=UTF-8"&gt;
+&lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1 class="entry-title"&gt;Access Modifiers in Java&lt;/h1&gt;
+&lt;table style="border-style: solid; border-spacing: 0.1px;
+border-color: green" cellspacing="2" cellpadding="2"
+border="1"&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td valign="top"&gt;&lt;br&gt;
+&lt;/td&gt;
+&lt;td valign="top" align="center"&gt;&lt;b&gt;default&lt;/b&gt;&lt;b&gt;&lt;br&gt;
+&lt;/b&gt; &lt;/td&gt;
+&lt;td valign="top" align="center"&gt;&lt;b&gt;private&lt;/b&gt;&lt;b&gt;&lt;br&gt;
+&lt;/b&gt; &lt;/td&gt;
+&lt;td valign="top" align="center"&gt;&lt;b&gt;protected&lt;/b&gt;&lt;b&gt;&lt;br&gt;
+&lt;/b&gt; &lt;/td&gt;
+&lt;td valign="top" align="center"&gt;&lt;b&gt;public&lt;/b&gt;&lt;b&gt;&lt;br&gt;
+&lt;/b&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td valign="top" align="center"&gt;&lt;b&gt;Same class&lt;/b&gt;&lt;b&gt;&lt;br&gt;
+&lt;/b&gt; &lt;/td&gt;
+&lt;td valign="top" align="center"&gt;Yes&lt;br&gt;
+&lt;/td&gt;
+&lt;td valign="top" align="center"&gt;Yes&lt;br&gt;
+&lt;/td&gt;
+&lt;td valign="top" align="center"&gt;Yes&lt;br&gt;
+&lt;/td&gt;
+&lt;td valign="top" align="center"&gt;Yes&lt;br&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td valign="top" align="center"&gt;&lt;b&gt;Same package &lt;/b&gt;&lt;b&gt;&lt;br&gt;
+&lt;/b&gt;&lt;b&gt; subclass&lt;/b&gt;&lt;b&gt;&lt;br&gt;
+&lt;/b&gt; &lt;/td&gt;
+&lt;td valign="top" align="center"&gt;Yes&lt;br&gt;
+&lt;/td&gt;
+&lt;td valign="top" align="center"&gt;No&lt;br&gt;
+&lt;/td&gt;
+&lt;td valign="top" align="center"&gt;Yes&lt;br&gt;
+&lt;/td&gt;
+&lt;td valign="top" align="center"&gt;Yes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td valign="top" align="center"&gt;&lt;b&gt;Same package &lt;/b&gt;&lt;b&gt;&lt;br&gt;
+&lt;/b&gt;&lt;b&gt; non-subclass&lt;/b&gt;&lt;b&gt;&lt;br&gt;
+&lt;/b&gt; &lt;/td&gt;
+&lt;td valign="top" align="center"&gt;Yes&lt;br&gt;
+&lt;/td&gt;
+&lt;td valign="top" align="center"&gt;No&lt;br&gt;
+&lt;/td&gt;
+&lt;td valign="top" align="center"&gt;Yes&lt;br&gt;
+&lt;/td&gt;
+&lt;td valign="top" align="center"&gt;Yes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td valign="top" align="center"&gt;&lt;b&gt;Different package &lt;/b&gt;&lt;b&gt;&lt;br&gt;
+&lt;/b&gt;&lt;b&gt; subclass&lt;/b&gt;&lt;b&gt;&lt;br&gt;
+&lt;/b&gt; &lt;/td&gt;
+&lt;td valign="top" align="center"&gt;No&lt;br&gt;
+&lt;/td&gt;
+&lt;td valign="top" align="center"&gt;No&lt;br&gt;
+&lt;/td&gt;
+&lt;td valign="top" align="center"&gt;Yes&lt;br&gt;
+&lt;/td&gt;
+&lt;td valign="top" align="center"&gt;Yes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td valign="top" align="center"&gt;&lt;b&gt;Different package &lt;/b&gt;&lt;b&gt;&lt;br&gt;
+&lt;/b&gt;&lt;b&gt; non-subclass&lt;/b&gt;&lt;b&gt;&lt;br&gt;
+&lt;/b&gt; &lt;/td&gt;
+&lt;td valign="top" align="center"&gt;No&lt;br&gt;
+&lt;/td&gt;
+&lt;td valign="top" align="center"&gt;No&lt;br&gt;
+&lt;/td&gt;
+&lt;td valign="top" align="center"&gt;No&lt;br&gt;
+&lt;/td&gt;
+&lt;td valign="top" align="center"&gt;Yes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;br&gt;
+&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</Answer>
+</QA>
+<QA>
+<Question>Q76. Where these question come from?</Question>
 <Answer># Where these question come from?
 
 Reference:
