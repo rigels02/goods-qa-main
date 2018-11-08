@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <knBase>
-<modifyTime>2018-10-28T19:50:12.258+02:00</modifyTime>
+<modifyTime>2018-11-08T17:03:54.182+02:00</modifyTime>
 <qaList>
 <QA>
 <Question>Q1. Explain JVM, JRE and JDK?</Question>
@@ -2565,7 +2565,117 @@ border="1"&gt;
 &lt;/html&gt;</Answer>
 </QA>
 <QA>
-<Question>Q76. Where these question come from?</Question>
+<Question>Q76. REST API</Question>
+<Answer>&lt;html&gt;
+&lt;head&gt;
+
+&lt;meta http-equiv="content-type" content="text/html; charset=UTF-8"&gt;
+&lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;REST API&lt;/h1&gt;
+&lt;p&gt;REST stands for Representational State Transfer. It relies on a
+stateless, client-server, &lt;br&gt;
+cacheable communications. JSON (JavaScript Object Notation) is
+used as a lightweight data-interchange format. &lt;br&gt;
+The response can confirm that some alteration has been made to the
+stored resource, and the response can provide hypertext links to &lt;br&gt;
+other related resources or collections of resources. When HTTP is
+used, as is most common, the operations available are GET, POST,
+PUT, DELETE, and other predefined CRUD HTTP methods. &lt;br&gt;
+More: &lt;a
+href="https://en.wikipedia.org/wiki/Representational_state_transfer"&gt;https://en.wikipedia.org/wiki/Representational_state_transfer&lt;/a&gt;&lt;br&gt;
+&lt;/p&gt;
+&lt;h2&gt;CRUD methods&lt;/h2&gt;
+&lt;table class="wikitable" border="1"&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;th&gt;Operation&lt;br&gt;
+&lt;/th&gt;
+&lt;th&gt;SQL
+&lt;/th&gt;
+&lt;th&gt;HTTP
+&lt;/th&gt;
+&lt;th&gt;&lt;a
+href="https://en.wikipedia.org/wiki/Representational_state_transfer#Applied_to_Web_services"
+title="Representational state transfer"&gt; RESTful WS&lt;/a&gt;
+&lt;/th&gt;
+&lt;th&gt;DDS
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Create
+&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://en.wikipedia.org/wiki/Insert_%28SQL%29"
+title="Insert (SQL)"&gt;INSERT&lt;/a&gt;
+&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://en.wikipedia.org/wiki/PUT_%28HTTP%29"
+class="mw-redirect" title="PUT (HTTP)"&gt;PUT&lt;/a&gt; / &lt;a
+href="https://en.wikipedia.org/wiki/POST_%28HTTP%29"
+title="POST (HTTP)"&gt;POST&lt;/a&gt;
+&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://en.wikipedia.org/wiki/POST_%28HTTP%29"
+title="POST (HTTP)"&gt;POST&lt;/a&gt;
+&lt;/td&gt;
+&lt;td&gt;write
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Read (Retrieve)
+&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://en.wikipedia.org/wiki/Select_%28SQL%29"
+title="Select (SQL)"&gt;SELECT&lt;/a&gt;
+&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://en.wikipedia.org/wiki/GET_%28HTTP%29"
+class="mw-redirect" title="GET (HTTP)"&gt;GET&lt;/a&gt;
+&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://en.wikipedia.org/wiki/GET_%28HTTP%29"
+class="mw-redirect" title="GET (HTTP)"&gt;GET&lt;/a&gt;
+&lt;/td&gt;
+&lt;td&gt;read / take
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Update (Modify)
+&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://en.wikipedia.org/wiki/Update_%28SQL%29"
+title="Update (SQL)"&gt;UPDATE&lt;/a&gt;
+&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://en.wikipedia.org/wiki/PUT_%28HTTP%29"
+class="mw-redirect" title="PUT (HTTP)"&gt;PUT&lt;/a&gt; / &lt;a
+href="https://en.wikipedia.org/wiki/POST_%28HTTP%29"
+title="POST (HTTP)"&gt;POST&lt;/a&gt; / &lt;a
+href="https://en.wikipedia.org/wiki/PATCH_%28HTTP%29"
+class="mw-redirect" title="PATCH (HTTP)"&gt;PATCH&lt;/a&gt;
+&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://en.wikipedia.org/wiki/PUT_%28HTTP%29"
+class="mw-redirect" title="PUT (HTTP)"&gt;PUT&lt;/a&gt;
+&lt;/td&gt;
+&lt;td&gt;write
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Delete (Destroy)
+&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://en.wikipedia.org/wiki/Delete_%28SQL%29"
+title="Delete (SQL)"&gt;DELETE&lt;/a&gt;
+&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://en.wikipedia.org/wiki/DELETE_%28HTTP%29"
+class="mw-redirect" title="DELETE (HTTP)"&gt;DELETE&lt;/a&gt;
+&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://en.wikipedia.org/wiki/DELETE_%28HTTP%29"
+class="mw-redirect" title="DELETE (HTTP)"&gt;DELETE&lt;/a&gt;
+&lt;/td&gt;
+&lt;td&gt;dispose
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;</Answer>
+</QA>
+<QA>
+<Question>Q77.  Where these question come from?</Question>
 <Answer># Where these question come from?
 
 Reference:
