@@ -1,5 +1,6 @@
 package org.rb.qa.service;
 
+import java.util.List;
 import org.rb.qa.model.KNBase;
 import org.rb.qa.model.QA;
 
@@ -32,6 +33,27 @@ private  KNBase knBase;
      knBase.getQaList().add(idx, qa);
      return knBase;
     }
+    /**
+     * Move existing item to other position in the list
+     * @param oldIdx old position
+     * @param newIdx new position
+     * @return modified knBase
+     */
+    public KNBase moveItem(int oldIdx, int newIdx) throws IllegalArgumentException{
+        int sz = knBase.getQaList().size();
+        String emsg1 = "oldIdx out of scope!";
+         String emsg2 = "newIdx out of scope!";
+        if(oldIdx< 0 || oldIdx > sz - 1)
+            throw new IllegalArgumentException(emsg1);
+        if(newIdx< 0 || newIdx > sz - 1)
+            throw new IllegalArgumentException(emsg2);
+        QA qa = knBase.getQaList().get(oldIdx);
+        knBase.getQaList().remove(oldIdx);
+        knBase.getQaList().add(newIdx, qa);
+        
+        return knBase;
+    }
+    
     public KNBase deleteAll(){
      knBase.getQaList().clear();
      return knBase;
