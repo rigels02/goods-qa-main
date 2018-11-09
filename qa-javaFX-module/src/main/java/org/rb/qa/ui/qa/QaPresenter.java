@@ -239,7 +239,26 @@ public class QaPresenter implements Initializable {
         updateListView();
     }
 
-    
+    @FXML
+    void onBtnMove(ActionEvent event) {
+        if(fquestionView.getSelectionModel().getSelectedIndex()<0) return;
+        int idx = fquestionView.getSelectionModel().getSelectedIndex();
+        int maxIdx = qaGenerator.getAllQuestionsList().size()-1;
+        //TODO
+        int newIdx = Dialogs.NumInputDialog("Select position to move on", maxIdx, "Input pos number");
+         //System.out.println("Result = "+newIdx);
+         if(newIdx == -1)
+             return;
+         
+        try {
+            KNBaseEditor.take(qaGenerator.getKnBase()).moveItem(idx, newIdx);
+            MainApp.app.reloadAppDataConfig();
+        } catch (Exception ex) {
+            Logger.getLogger(QaPresenter.class.getName()).log(Level.SEVERE, null, ex);
+            Dialogs.popupError("Error", ex.getMessage());
+        }
+        updateListView();
+    }
     
     private void takeSelectedAndStartEditView(boolean addNew){
     Scene oldScene = primaryStage.getScene();

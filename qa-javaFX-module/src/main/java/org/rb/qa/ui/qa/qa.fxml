@@ -78,6 +78,11 @@
                                     <Insets left="10.0" right="10.0" />
                                  </HBox.margin>
                               </Button>
+                              <Button fx:id="f_btnMove" mnemonicParsing="false" onAction="#onBtnMove" text="Move">
+                                 <HBox.margin>
+                                    <Insets left="10.0" right="10.0" />
+                                 </HBox.margin>
+                              </Button>
                            </children>
                            <padding>
                               <Insets bottom="5.0" top="5.0" />

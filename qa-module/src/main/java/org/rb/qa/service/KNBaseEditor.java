@@ -34,8 +34,8 @@ private  KNBase knBase;
      return knBase;
     }
     /**
-     * Move existing item to other position in the list
-     * @param oldIdx old position
+     * Move existing (selected) item to other position in the list
+     * @param oldIdx current position
      * @param newIdx new position
      * @return modified knBase
      */
